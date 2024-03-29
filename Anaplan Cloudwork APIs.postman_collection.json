@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "e2e7cab7-a68b-4503-b356-0f168cb04043",
+		"name": "Anaplan Cloudwork APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25502368"
+	},
+	"item": [
+		{
+			"name": "Anaplan Auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"anaplanAuthTokenValue\", jsonData.tokenInfo.tokenValue);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{email}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://auth.anaplan.com/token/authenticate",
+					"protocol": "https",
+					"host": [
+						"auth",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"token",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all integrations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "AnaplanAuthToken {{anaplanAuthTokenValue}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.cloudworks.anaplan.com/2/0/integrations/connections",
+					"protocol": "https",
+					"host": [
+						"api",
+						"cloudworks",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"2",
+						"0",
+						"integrations",
+						"connections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all integrations by integrationID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "AnaplanAuthToken {{anaplanAuthTokenValue}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.cloudworks.anaplan.com/2/0/integrations/953dc6b98d704409a0b298fce01ec1a9",
+					"protocol": "https",
+					"host": [
+						"api",
+						"cloudworks",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"2",
+						"0",
+						"integrations",
+						"953dc6b98d704409a0b298fce01ec1a9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all integrations by model id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "AnaplanAuthToken {{anaplanAuthTokenValue}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.cloudworks.anaplan.com/2/0/integrations/anaplanModels/71172886C2164406AE8C0E82CC8F088F",
+					"protocol": "https",
+					"host": [
+						"api",
+						"cloudworks",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"2",
+						"0",
+						"integrations",
+						"anaplanModels",
+						"71172886C2164406AE8C0E82CC8F088F"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new integration Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "AnaplanAuthToken {{anaplanAuthTokenValue}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.cloudworks.anaplan.com/2/0/integrations",
+					"protocol": "https",
+					"host": [
+						"api",
+						"cloudworks",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"2",
+						"0",
+						"integrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new process integration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "AnaplanAuthToken {{anaplanAuthTokenValue}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.cloudworks.anaplan.com/2/0/integrations",
+					"protocol": "https",
+					"host": [
+						"api",
+						"cloudworks",
+						"anaplan",
+						"com"
+					],
+					"path": [
+						"2",
+						"0",
+						"integrations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
